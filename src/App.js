@@ -4,7 +4,7 @@ import './App.css';
 const barcelonaPlayers = {
   Goalkeepers: [
     {
-      Name: "Marc-Andre ter Stegen",
+      Name: "Ter Stegen",
       Number: 1,
       Image: "https://raw.githubusercontent.com/abhishake21/Project-images/main/barca-players/ter_stegen.webp"
     },
@@ -29,6 +29,11 @@ const barcelonaPlayers = {
       Name: "Sergino Dest",
       Number: 2,
       Image: "https://raw.githubusercontent.com/abhishake21/Project-images/main/barca-players/dest.webp"
+    },
+    {
+      Name: "Ronald Araujo",
+      Number: 4,
+      Image: "https://raw.githubusercontent.com/abhishake21/Project-images/main/barca-players/araujo.webp"
     },
     {
       Name: "Dani Alves",
@@ -75,12 +80,12 @@ const barcelonaPlayers = {
   ],
   Forwards: [
     {
-      Name: "Ousmane Dembele",
+      Name: "Dembele",
       Number: 7,
       Image: "https://raw.githubusercontent.com/abhishake21/Project-images/main/barca-players/dembele.webp"
     },
     {
-      Name: "Memphis Depay",
+      Name: "Memphis",
       Number: 9,
       Image: "https://raw.githubusercontent.com/abhishake21/Project-images/main/barca-players/depay.webp"
     },
@@ -121,15 +126,21 @@ function App() {
   
   return (
     <div className="App">
-      <h1>Barcelona Squad</h1>
-      {Object.keys(barcelonaPlayers).map(position => 
-        <span key={position} className='position-list' onClick={()=> positionClickHandler(position)}>{position}</span>
-      )}
+      <header>
+        <h1 className='heading'>Barcelona Squad 2021</h1>
+        <nav className='position-list'>
+          {Object.keys(barcelonaPlayers).map(position => 
+            <li key={position} className="position" onClick={()=> positionClickHandler(position)}>{position}</li>
+          )}
+        </nav>
+      </header>
       <main>
         {barcelonaPlayers[position].map(player => 
           <div key={player.Number} className='player'>
             <img className='player-image' src={player.Image} alt={player.Name} />
-            <span className='player-name-number'>{player.Number} {player.Name}</span>
+            <div className='player-info'>
+              <span className='player--number'>{player.Number}</span> • {player.Name}
+            </div>
           </div>
         )}
       </main>
